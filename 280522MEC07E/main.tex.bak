@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{vaibhavblayer}
+\instagramp
+
+\header{280522}{MEC}{07}[E]
+\footer{3}
+
+%
+%\newcommandx{\xangle}[6][1=thick, 6=$\theta$]{
+%		\draw[#1] (#2) +(#3:#5) arc (#3:#4:#5);
+%		\path (#2) ++(0.5*#3+0.5*#4:#5+0.25) node{#6};
+%}
+
+
+\newcommandx{\moirodd}[4][1=c]{
+		\ifthenelse{\equal{#1}{c}}{         
+         \draw (0, -#2)--(0, #2);
+         \begin{scope}[ xshift=0cm, rotate around={#4:(0,0)}]
+         \draw[line width=1mm, cap=round ] (-#3, 0)--(#3, 0);
+         \end{scope} 
+         }{
+         \draw (0, -#2)--(0, #2);
+         \begin{scope}[ xshift=#3 cm, rotate around={#4:(-#3,0)}]
+         \draw[line width=1mm, cap=round] (-#3, 0)--(#3, 0);
+         \end{scope}
+         }
+ }
+
+
+\newcommandx{\xpic}[2][1=8]{
+\begin{center}	\includegraphics[width=#1 cm]{#2}
+\end{center}
+}
+
+\begin{document}
+
+\pagecolor{white!65!orange}
+\color{white!10!purple}
+
+\title{entropy}
+
+\vspace*{\fill}
+
+\begin{center}
+\begin{tikzpicture}[line width=0.1 mm]
+\pic (ground) {frame=5cm};
+\draw (ground-center)++(0, 1) coordinate (o) circle[radius=1];
+%\xangle{o}{240}{300}{2};
+%\draw (0, 0) arc (0:120:1 and 2);
+%\draw (0, 0) --+(45:4); 
+\moirodd[e]{2}{1.5}{0};
+\ifthenelse{1=2}{\draw (5,0) circle(2pt);}{ \draw (5,0) circle(5pt);}
+\end{tikzpicture}
+\end{center}
+\xpic[9]{out.pdf}
+\[
+ \int_0^5 \dfrac{2x}{1+x^2} \; d\!x 
+\]
+
+\vspace*{\fill}
+\end{document}
